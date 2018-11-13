@@ -535,7 +535,7 @@ func (c *Context) BindYAML(obj interface{}) error {
 // See the binding package.
 func (c *Context) MustBindWith(obj interface{}, b binding.Binding) (err error) {
 	if err = c.ShouldBindWith(obj, b); err != nil {
-		c.AbortWithError(http.StatusBadRequest, err).SetType(ErrorTypeBind)
+		return c.AbortWithError(http.StatusBadRequest, err).SetType(ErrorTypeBind)
 	}
 
 	return
